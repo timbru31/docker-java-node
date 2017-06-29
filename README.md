@@ -1,6 +1,6 @@
 # Java (JRE 8) with Node.js 6 LTS Dockefile
 
-A minimal Dockerfile based on OpenJDK's JRE8 Dockerfile with Node.js 6 LTS (Boron) installed
+A minimal Dockerfile based on OpenJDK's JRE8 Dockerfile (regular or alpine) with Node.js 6 LTS (Boron) installed
 
 ## What's included
 
