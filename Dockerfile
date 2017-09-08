@@ -5,4 +5,5 @@ ENV REFRESHED_AT 2017-09-08
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get update -qqy && apt-get -qqyy install \
-    nodejs
+    nodejs \
+  && rm -rf /var/lib/apt/lists/*
