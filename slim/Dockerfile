@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-slim
 LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
 
-ENV REFRESHED_AT 2017-11-30
+ENV REFRESHED_AT 2017-12-07
 
 RUN apt-get update -qqy && apt-get -qqyy install \
     curl \
