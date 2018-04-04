@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jre-alpine@sha256:5640b489393e2fa1edfca412a3f879ea99b6751429388f50ad3ee6fb09323933
 LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
 
 ARG REFRESHED_AT
