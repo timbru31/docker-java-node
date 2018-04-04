@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build --build-arg REFRESHED_AT="$(date +%Y-%m-%d)" -f "$DOCKERFILE_PATH" -t "$IMAGE_NAME" .
