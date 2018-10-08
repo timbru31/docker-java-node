@@ -4,9 +4,8 @@ LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
 ARG REFRESHED_AT
 ENV REFRESHED_AT $REFRESHED_AT
 
-RUN sed -i -e 's/v3\.8/edge/g' /etc/apk/repositories
-RUN apk add --no-cache \
+RUN apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/main/ --no-cache \
   nodejs \
-  npm\
+  nodejs-npm \
   yarn \
   curl
