@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-slim@sha256:f27be39e13bf5fedf52068137aa2a0e37199f77d972eb387e6bcc8a9b264d00e
+FROM openjdk:8-jre-slim@sha256:21be343875394235586eaf38f3fe5bb1b32da896a9c81b4b3f43bd5d7f0fa228
 LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
 
 ARG REFRESHED_AT
