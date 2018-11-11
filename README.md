@@ -4,7 +4,7 @@
 [![Docker Build Status](https://img.shields.io/docker/build/timbru31/java-node.svg)](https://hub.docker.com/r/timbru31/java-node/)
 [![Build Status](https://travis-ci.org/timbru31/docker-java-node.svg?branch=master)](https://travis-ci.org/timbru31/docker-java-node)
 
-A minimal Dockerfile based on OpenJDK's JRE8 Dockerfile (regular, slim or alpine) with Node.js 10 LTS (Carbon) installed
+A minimal Dockerfile based on OpenJDK's JRE8 Dockerfile (regular, slim or alpine) with Node.js 10 LTS (Dubnium) installed.
 
 ## What's included
 
