@@ -7,6 +7,10 @@ before_install:
   -  docker pull hadolint/hadolint
 
 script:
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < Dockerfile
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < slim/Dockerfile
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < alpine/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 8/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 11/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 8/slim/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 11/slim/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 8/alpine/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 11/alpine/Dockerfile
+  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 11/alpine-slim/Dockerfile
