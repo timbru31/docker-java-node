@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-slim@sha256:bb4661f1d0d5fc773f494c46582fb7eba2aebaff2b527319e61157450afe617f
+FROM adoptopenjdk/openjdk11:alpine-slim@sha256:d1fe9d22ae31ed58babbd6bc0b02abbf4143ca8bb1d4c778e55a0fa0656e6d55
 LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
 
 ARG REFRESHED_AT
