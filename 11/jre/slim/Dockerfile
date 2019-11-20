@@ -1,0 +1,21 @@
+FROM openjdk:11-jre-slim@sha256:9618813d88b3d3570c0a8448e81f3a1b3fb6fecf15466089c82547e31119b397
+LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
+
+ARG REFRESHED_AT
+ENV REFRESHED_AT $REFRESHED_AT
+
+# hadolint ignore=DL3009
+RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
+  curl \
+  gnupg2
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
+  nodejs \
+  yarn \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
