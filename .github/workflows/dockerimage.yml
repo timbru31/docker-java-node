@@ -1,0 +1,23 @@
+name: Test Docker image
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: |
+          docker run -i $(docker build -q 8/jdk/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 8/jdk/slim/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 8/jdk/alpine/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 8/jre/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 8/jre/slim/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 8/jre/alpine/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 11/jdk/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 11/jdk/slim/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 11/jdk/alpine/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 11/jre/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 11/jre/slim/Dockerfile) /bin/sh -c "java -version && node --version"
+          docker run -i $(docker build -q 11/jre/alpine/Dockerfile) /bin/sh -c "java -version && node --version"
