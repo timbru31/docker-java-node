@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:11-jre@sha256:e4677259896aeca47c69b5a691f0594bcbff556b231793a33ac0c7c8de6c8bab
+FROM azul/zulu-openjdk-alpine:11-jre@sha256:6731186dd4abc7d2a1d148c6d12c9357ace82839bf745c9ca63871f0f559fc25
 LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
 
 ARG REFRESHED_AT
