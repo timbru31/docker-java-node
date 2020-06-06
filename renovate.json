@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    "disableRenovate",
+    ":disableRenovate",
     ":pinDigestsDisabled",
     ":automergePatch",
     ":automergeMinor",

@@ -9,13 +9,9 @@ before_install:
 script:
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 8/jre/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 11/jre/Dockerfile
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 8/jre/slim/Dockerfile
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 11/jre/slim/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 8/jre/alpine/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 11/jre/alpine/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 8/jdk/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 11/jdk/Dockerfile
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 8/jdk/slim/Dockerfile
-  - docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < 11/jdk/slim/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 8/jdk/alpine/Dockerfile
   - docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < 11/jdk/alpine/Dockerfile

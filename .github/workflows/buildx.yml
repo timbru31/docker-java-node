@@ -14,28 +14,28 @@ jobs:
         docker-file:
             - path: 8/jdk
               tags: 8-jdk
-            - path: 8/jdk/slim
-              tags: 8-slim-jdk
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
             - path: 8/jdk/alpine
               tags: 8-alpine-jdk,8-azul-alpine-jdk
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
             - path: 8/jre
               tags: 8-jre,8
-            - path: 8/jre/slim
-              tags: 8-slim,8-slim-jre
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
             - path: 8/jre/alpine
               tags: 8-alpine,8-azul-alpine,8-alpine-jre,8-azul-alpine-jre
+              platforms: linux/amd64
             - path: 11/jdk
               tags: 11-jdk,jdk
-            - path: 11/jdk/slim
-              tags: 11-slim-jdk,slim-jdk
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
             - path: 11/jdk/alpine
               tags: alpine-jdk,azul-alpine-jdk,11-alpine-jdk,11-azul-alpine-jdk
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
             - path: 11/jre
               tags: latest,11,11-jre
-            - path: 11/jre/slim
-              tags: slim,11-slim,11-slim-jre
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
             - path: 11/jre/alpine
               tags: 11-alpine,11-alpine-jre,11-azul-alpine,11-azul-alpine-jre,alpine,alpine-jre,azul-alpine,azul-alpine-jre
+              platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -44,7 +44,6 @@ jobs:
         id: prepare
         run: |
           DOCKER_IMAGE=timbru31/java-node
-          DOCKER_PLATFORMS=linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
 
           TAGZ=$(echo ${{ matrix.docker-file.tags }} | tr "," "\n")
           VERSION=${TAGZ[0]}
@@ -56,7 +55,7 @@ jobs:
 
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
-          echo ::set-output name=buildx_args::--platform ${DOCKER_PLATFORMS} \
+          echo ::set-output name=buildx_args::--platform ${{ matrix.docker-file.platforms }} \
             --build-arg REFRESHED_AT=$(date +%Y-%m-%d) \
             ${TAGS} --file ./${{ matrix.docker-file.path }}/Dockerfile ./${{ matrix.docker-file.path }}
 

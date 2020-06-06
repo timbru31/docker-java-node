@@ -1,4 +1,4 @@
-FROM openjdk:8u252-jdk-buster
+FROM adoptopenjdk:8-jdk-hotspot-bionic
 LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
