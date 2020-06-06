@@ -14,6 +14,18 @@ A minimal Dockerfile based on OpenJDK's JRE or JDK 8/11 Dockerfile (regular, sli
 - yarn
 - curl
 
+## Available platforms
+
+These Dockerfiles leverage the new `buildx` functionality and offer the following platforms:
+- linux/amd64
+- linux/arm64
+- linux/arm/v7
+- linux/arm/v6
+- linux/386
+- linux/riscv64
+- linux/ppc64le
+- linux/s390x
+
 ---
 
 Built by (c) Tim Brust and contributors. Released under the MIT license.

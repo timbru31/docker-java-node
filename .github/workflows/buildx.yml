@@ -1,0 +1,91 @@
+name: buildx
+
+on: [push, pull_request]
+
+jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        docker-file:
+            - path: 8/jdk
+              tags: 8-jdk
+            - path: 8/jdk/slim
+              tags: 8-slim-jdk
+            - path: 8/jdk/alpine
+              tags: 8-alpine-jdk,8-azul-alpine-jdk
+            - path: 8/jre
+              tags: 8-jre,8
+            - path: 8/jre/slim
+              tags: 8-slim,8-slim-jre
+            - path: 8/jre/alpine
+              tags: 8-alpine,8-azul-alpine,8-alpine-jre,8-azul-alpine-jre
+            - path: 11/jdk
+              tags: 11-jdk,jdk
+            - path: 11/jdk/slim
+              tags: 11-slim-jdk,slim-jdk
+            - path: 11/jdk/alpine
+              tags: alpine-jdk,azul-alpine-jdk,11-alpine-jdk,11-azul-alpine-jdk
+            - path: 11/jre
+              tags: latest,11,11-jre
+            - path: 11/jre/slim
+              tags: slim,11-slim,11-slim-jre
+            - path: 11/jre/alpine
+              tags: 11-alpine,11-alpine-jre,11-azul-alpine,11-azul-alpine-jre,alpine,alpine-jre,azul-alpine,azul-alpine-jre
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Prepare
+        id: prepare
+        run: |
+          DOCKER_IMAGE=timbru31/java-node
+          DOCKER_PLATFORMS=linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+
+          TAGZ=$(echo ${{ matrix.docker-file.tags }} | tr "," "\n")
+          VERSION=${TAGZ[0]}
+
+          for tag in $TAGZ
+          do
+            TAGS="${TAGS} --tag ${DOCKER_IMAGE}:${tag}"
+          done
+
+          echo ::set-output name=docker_image::${DOCKER_IMAGE}
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=buildx_args::--platform ${DOCKER_PLATFORMS} \
+            --build-arg REFRESHED_AT=$(date +%Y-%m-%d) \
+            ${TAGS} --file ./${{ matrix.docker-file.path }}/Dockerfile ./${{ matrix.docker-file.path }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v2
+
+      - name: Available platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
+
+      - name: Docker Buildx (build)
+        run: |
+          docker buildx build --output "type=image,push=false" ${{ steps.prepare.outputs.buildx_args }}
+
+      - name: Docker Login
+        if: success() && github.event_name != 'pull_request'
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+
+      - name: Docker Buildx (push)
+        if: success() && github.event_name != 'pull_request'
+        run: |
+          docker buildx build --output "type=image,push=true" ${{ steps.prepare.outputs.buildx_args }}
+
+      - name: Docker Check Manifest
+        if: always() && github.event_name != 'pull_request'
+        run: |
+          docker run --rm mplatform/mquery ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
+
+      - name: Clear
+        if: always() && github.event_name != 'pull_request'
+        run: |
+          rm -f ${HOME}/.docker/config.json
