@@ -14,25 +14,25 @@ jobs:
         docker-file:
             - path: 8/jdk
               tags: 8-jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
             - path: 8/jdk/alpine
               tags: 8-alpine-jdk,8-azul-alpine-jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
             - path: 8/jre
               tags: 8-jre,8
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
             - path: 8/jre/alpine
               tags: 8-alpine,8-azul-alpine,8-alpine-jre,8-azul-alpine-jre
               platforms: linux/amd64
             - path: 11/jdk
               tags: 11-jdk,jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
             - path: 11/jdk/alpine
               tags: alpine-jdk,azul-alpine-jdk,11-alpine-jdk,11-azul-alpine-jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
             - path: 11/jre
               tags: latest,11,11-jre
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
             - path: 11/jre/alpine
               tags: 11-alpine,11-alpine-jre,11-azul-alpine,11-azul-alpine-jre,alpine,alpine-jre,azul-alpine,azul-alpine-jre
               platforms: linux/amd64
