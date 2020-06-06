@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:8u252-jre
+FROM azul/zulu-openjdk-alpine:8-jre
 LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
