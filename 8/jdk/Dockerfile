@@ -1,4 +1,4 @@
-FROM openjdk:8u252-jdk-buster
+FROM openjdk:8-jdk-buster
 LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
