@@ -22,7 +22,6 @@ These Dockerfiles leverage the new `buildx` functionality and offer the followin
 - linux/arm/v7
 - linux/arm/v6
 - linux/386
-- linux/riscv64
 - linux/ppc64le
 - linux/s390x
 
