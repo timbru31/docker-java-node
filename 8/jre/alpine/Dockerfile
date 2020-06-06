@@ -1,5 +1,5 @@
-FROM azul/zulu-openjdk-alpine:8-jre@sha256:12b6756b4ab79667a99cc369fd1c6030f80869749a005263aecd762cdcd6a1c6
-LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
+FROM azul/zulu-openjdk-alpine:8u252-jre
+LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
 ENV REFRESHED_AT $REFRESHED_AT

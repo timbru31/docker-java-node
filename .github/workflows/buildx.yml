@@ -1,6 +1,10 @@
 name: buildx
 
-on: [push, pull_request]
+on:
+  schedule:
+    - cron: '37 04 * * *'
+  pull_request:
+  push:
 
 jobs:
   buildx:

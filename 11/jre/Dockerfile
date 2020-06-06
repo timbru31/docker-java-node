@@ -1,5 +1,5 @@
-FROM openjdk:11-jre@sha256:68d29d2a9ee17a15d288368d2031bc9ffe40cbf85a92e1420696003e46a55262
-LABEL maintainer "Tim Brust <tim.brust@sinnerschrader.com>"
+FROM openjdk:11.0.7-jre-buster
+LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
 ENV REFRESHED_AT $REFRESHED_AT
