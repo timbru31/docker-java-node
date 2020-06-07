@@ -1,7 +1,7 @@
 # Java (JRE or JDK version 8 or 11) with Node.js 12 LTS (Erbium) Dockefile
 
 [![Docker Automated build](https://img.shields.io/docker/automated/timbru31/java-node.svg)](https://hub.docker.com/r/timbru31/java-node/)
-[![Docker Build Status](https://img.shields.io/docker/build/timbru31/java-node.svg)](https://hub.docker.com/r/timbru31/java-node/)
+[![buildx Status](https://github.com/timbru31/docker-java-node/workflows/buildx/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3Abuildx)
 [![Build Status](https://travis-ci.org/timbru31/docker-java-node.svg?branch=master)](https://travis-ci.org/timbru31/docker-java-node)
 
 A minimal Dockerfile based on AdoptOpenJDK's JRE or JDK 8/11 Dockerfile (regular) and Azul's OpenJDK JRE or JDK 8/11 (alpine) with Node.js 12 LTS (Erbium) installed.
@@ -14,7 +14,7 @@ A minimal Dockerfile based on AdoptOpenJDK's JRE or JDK 8/11 Dockerfile (regular
 - yarn
 - curl
 
-## Available platforms
+### Available platforms
 
 These Dockerfiles leverage the new `buildx` functionality and offer the following platforms:
 - linux/amd64
