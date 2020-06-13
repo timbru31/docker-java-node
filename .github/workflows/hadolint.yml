@@ -1,0 +1,11 @@
+name: Lint Dockerfiles
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: brew install hadolint
+      - run: hadolint {8,11}/**/*Dockerfile
