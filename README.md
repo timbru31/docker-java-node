@@ -1,4 +1,4 @@
-# Java (JRE or JDK version 8 or 11) with Node.js 12 LTS (Erbium) Dockefile
+# Java (JRE or JDK version 8 or 11) with Node.js 12 LTS (Erbium) Dockerfile
 
 [![Docker Automated build](https://img.shields.io/docker/automated/timbru31/java-node.svg)](https://hub.docker.com/r/timbru31/java-node/)
 [![buildx Status](https://github.com/timbru31/docker-java-node/workflows/buildx/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3Abuildx)
