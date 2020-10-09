@@ -2,7 +2,7 @@ name: buildx
 
 on:
   schedule:
-    - cron: '37 04 * * *'
+    - cron: "37 04 * * *"
   pull_request:
   push:
 
@@ -12,30 +12,30 @@ jobs:
     strategy:
       matrix:
         docker-file:
-            - path: 8/jdk
-              tags: 8-jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-            - path: 8/jdk/alpine
-              tags: 8-alpine-jdk,8-azul-alpine-jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-            - path: 8/jre
-              tags: 8-jre,8
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-            - path: 8/jre/alpine
-              tags: 8-alpine,8-azul-alpine,8-alpine-jre,8-azul-alpine-jre
-              platforms: linux/amd64
-            - path: 11/jdk
-              tags: 11-jdk,jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-            - path: 11/jdk/alpine
-              tags: alpine-jdk,azul-alpine-jdk,11-alpine-jdk,11-azul-alpine-jdk
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-            - path: 11/jre
-              tags: latest,11,11-jre
-              platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-            - path: 11/jre/alpine
-              tags: 11-alpine,11-alpine-jre,11-azul-alpine,11-azul-alpine-jre,alpine,alpine-jre,azul-alpine,azul-alpine-jre
-              platforms: linux/amd64
+          - path: 8/jdk
+            tags: 8-jdk
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 8/jdk/alpine
+            tags: 8-alpine-jdk,8-azul-alpine-jdk
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 8/jre
+            tags: 8-jre,8
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 8/jre/alpine
+            tags: 8-alpine,8-azul-alpine,8-alpine-jre,8-azul-alpine-jre
+            platforms: linux/amd64
+          - path: 11/jdk
+            tags: 11-jdk,jdk
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 11/jdk/alpine
+            tags: alpine-jdk,azul-alpine-jdk,11-alpine-jdk,11-azul-alpine-jdk
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 11/jre
+            tags: latest,11,11-jre
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 11/jre/alpine
+            tags: 11-alpine,11-alpine-jre,11-azul-alpine,11-azul-alpine-jre,alpine,alpine-jre,azul-alpine,azul-alpine-jre
+            platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -50,40 +50,53 @@ jobs:
 
           for tag in $TAGZ
           do
-            TAGS="${TAGS} --tag ${DOCKER_IMAGE}:${tag}"
+            TAGS="${TAGS},${DOCKER_IMAGE}:${tag}"
           done
 
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
-          echo ::set-output name=buildx_args::--platform ${{ matrix.docker-file.platforms }} \
-            --build-arg REFRESHED_AT=$(date +%Y-%m-%d) \
-            ${TAGS} --file ./${{ matrix.docker-file.path }}/Dockerfile ./${{ matrix.docker-file.path }}
+          echo ::set-output name=tags::${TAGS}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
 
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
         with:
-          version: latest
+          install: true
 
       - name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
 
       - name: Docker Buildx (build)
-        run: |
-          docker buildx build --output "type=image,push=false" ${{ steps.prepare.outputs.buildx_args }}
+        uses: docker/build-push-action@v2
+        if: success() && !contains(github.ref, 'master')
+        with:
+          push: false
+          context: ./${{ matrix.docker-file.path }}
+          file: ./${{ matrix.docker-file.path }}/Dockerfile
+          build-args: REFRESHED_AT=$(date +%Y-%m-%d)
+          platforms: ${{ matrix.docker-file.platforms }}
+          tags: ${{ steps.prepare.outputs.tags }}
 
       - name: Docker Login
-        if: success() && github.event_name != 'pull_request'
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+        if: success() && contains(github.ref, 'master')
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Buildx (push)
-        if: success() && github.event_name != 'pull_request'
-        run: |
-          docker buildx build --output "type=image,push=true" ${{ steps.prepare.outputs.buildx_args }}
+        uses: docker/build-push-action@v2
+        if: success() && contains(github.ref, 'master')
+        with:
+          push: true
+          context: ./${{ matrix.docker-file.path }}
+          file: ./${{ matrix.docker-file.path }}/Dockerfile
+          build-args: REFRESHED_AT=$(date +%Y-%m-%d)
+          platforms: ${{ matrix.docker-file.platforms }}
+          tags: ${{ steps.prepare.outputs.tags }}
 
       - name: Docker Check Manifest
         if: always() && github.event_name != 'pull_request'
