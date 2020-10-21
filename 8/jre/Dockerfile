@@ -6,7 +6,6 @@ ENV REFRESHED_AT $REFRESHED_AT
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# hadolint ignore=DL3009
 RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
   ca-certificates
 
