@@ -1,8 +1,16 @@
-FROM adoptopenjdk:8-jre-hotspot-bionic
+FROM adoptopenjdk:8-jre-hotspot-focal
 LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
 ENV REFRESHED_AT $REFRESHED_AT
+
+# hadolint ignore=DL3009
+RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
+  gnupg2 \
+  ca-certificates curl openssl libssl-dev gdb binutils file gcc nano libc-dbg libc-bin libc-dev
+
+RUN update-ca-certificates -f
+RUN c_rehash
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
