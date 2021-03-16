@@ -98,9 +98,8 @@ jobs:
           echo ::set-output name=tags::${TAGS}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-        with:
-          image: multiarch/qemu-user-static:latest
+        run: |
+          docker run --rm --privileged multiarch/qemu-user-static:latest --reset -p yes
 
       - name: Set up Docker Buildx
         id: buildx
