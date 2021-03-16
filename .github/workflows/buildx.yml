@@ -107,7 +107,9 @@ jobs:
           install: true
 
       - name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
+        run: |
+          echo ${{ steps.buildx.outputs.platforms }}
+          qemu-arm --version
 
       - name: Docker Buildx (build)
         uses: docker/build-push-action@v2
