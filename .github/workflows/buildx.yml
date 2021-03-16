@@ -99,6 +99,8 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+        with:
+          image: multiarch/qemu-user-static:latest
 
       - name: Set up Docker Buildx
         id: buildx
