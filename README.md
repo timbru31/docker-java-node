@@ -10,7 +10,7 @@ A minimal Dockerfile based on AdoptOpenJDK's JRE or JDK 8/11 Dockerfile (regular
 
 - JRE or JDK 8/11
 - Node.js 12 (Erbium) LTS or 14 LTS (Fermium)
-- npm 6
+- npm 6 (latest for Node.js LTS v14 on alpine, see [why](https://gitlab.alpinelinux.org/alpine/aports/-/commit/25b10bd1a93e12a7e49fee38b0a229281ae49fb7))
 - yarn
 - curl
 
