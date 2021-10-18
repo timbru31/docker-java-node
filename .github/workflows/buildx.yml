@@ -8,7 +8,7 @@ on:
 
 jobs:
   buildx:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -92,6 +92,9 @@ jobs:
           do
             TAGS="${TAGS},${DOCKER_IMAGE}:${tag}"
           done
+
+          sudo add-apt-repository ppa:jacob/virtualisation (for Ubuntu 20.04)
+          sudo apt-get update && sudo apt-get install qemu qemu-user qemu-user-static
 
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
