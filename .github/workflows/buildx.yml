@@ -93,7 +93,7 @@ jobs:
             TAGS="${TAGS},${DOCKER_IMAGE}:${tag}"
           done
 
-          sudo add-apt-repository ppa:jacob/virtualisation (for Ubuntu 20.04)
+          sudo add-apt-repository ppa:jacob/virtualisation
           sudo apt-get update && sudo apt-get install qemu qemu-user qemu-user-static
 
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
