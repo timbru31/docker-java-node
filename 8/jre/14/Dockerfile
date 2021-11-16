@@ -1,4 +1,4 @@
-FROM adoptopenjdk:8-jre-hotspot-bionic
+FROM eclipse-temurin:8-jre
 LABEL maintainer "Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT

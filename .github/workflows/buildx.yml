@@ -3,82 +3,86 @@ name: buildx
 on:
   schedule:
     - cron: "37 04 * * *"
-  pull_request:
   push:
 
 jobs:
   buildx:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
         docker-file:
-          - path: 8/jdk/12
-            tags: 8-jdk-12,8-jdk-erbium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-
           - path: 8/jdk/14
-            tags: 8-jdk,8-jdk-14,8-jdk-fermium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+            tags: 8-jdk-14,8-jdk-fermium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
-          - path: 8/jdk/12/alpine
-            tags: 8-alpine-jdk-12,8-alpine-jdk-erbium,8-azul-alpine-jdk-12,8-azul-alpine-jdk-erbium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 8/jdk/16
+            tags: 8-jdk,8-jdk-16,8-jdk-gallium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 8/jdk/14/alpine
-            tags: 8-alpine-jdk-14,8-alpine-jdk-fermium,8-azul-alpine-jdk-14,8-azul-alpine-jdk-fermium,8-alpine-jdk,8-azul-alpine-jdk
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+            tags: 8-alpine-jdk-14,8-alpine-jdk-fermium,8-temurin-alpine-jdk-14,8-temurin-alpine-jdk-fermium
+            platforms: linux/amd64
 
-          - path: 8/jre/12
-            tags: 8-jre-12,8-jre-fermium,8-12,8-erbium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 8/jdk/16/alpine
+            tags: 8-alpine-jdk-16,8-alpine-jdk-gallium,8-temurin-alpine-jdk-16,8-temurin-alpine-jdk-gallium,8-alpine-jdk,8-temurin-alpine-jdk
+            platforms: linux/amd64
 
           - path: 8/jre/14
-            tags: 8-jre-14,8-jre-fermium,8-14,8-fermium,8-jre,8
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+            tags: 8-jre-14,8-jre-fermium,8-14,8-fermium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
-          - path: 8/jre/12/alpine
-            tags: 8-alpine-12,8-alpine-erbium,8-azul-alpine-12,8-azul-alpine-erbium,8-alpine-jre-12,8-alpine-jre-erbium,8-azul-alpine-jre-12,8-azul-alpine-jre-erbium
-            platforms: linux/amd64
+          - path: 8/jre/16
+            tags: 8-jre-16,8-jre-gallium,8-16,8-gallium,8-jre,8
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 8/jre/14/alpine
-            tags: 8-alpine-14,8-alpine-fermium,8-azul-alpine-14,8-azul-alpine-fermium,8-alpine-jre-14,8-alpine-jre-fermium,8-azul-alpine-jre-14,8-azul-alpine-jre-fermium,8-alpine,8-azul-alpine,8-alpine-jre,8-azul-alpine-jre
+            tags: 8-alpine-14,8-alpine-fermium,8-temurin-alpine-14,8-temurin-alpine-fermium,8-alpine-jre-14,8-alpine-jre-fermium,8-temurin-alpine-jre-14,8-temurin-alpine-jre-fermium
             platforms: linux/amd64
 
-          - path: 11/jdk/12
-            tags: 11-jdk-12,11-jdk-erbium,jdk-12,jdk-12-erbium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 8/jre/16/alpine
+            tags: 8-alpine-16,8-alpine-gallium,8-temurin-alpine-16,8-temurin-alpine-gallium,8-alpine-jre-16,8-alpine-jre-gallium,8-temurin-alpine-jre-16,8-temurin-alpine-jre-gallium,8-alpine,8-temurin-alpine,8-alpine-jre,8-temurin-alpine-jre
+            platforms: linux/amd64
 
           - path: 11/jdk/14
-            tags: 11-jdk-14,11-jdk-fermium,jdk-14,jdk-14-fermium,11-jdk,jdk
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+            tags: 11-jdk-14,11-jdk-fermium,jdk-14,jdk-14-fermium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
-          - path: 11/jdk/12/alpine
-            tags: alpine-jdk-12,alpine-jdk-erbium,azul-alpine-jdk-12,azul-alpine-jdk-erbium,11-alpine-jdk-12,11-alpine-jdk-erbium,11-azul-alpine-jdk-12,11-azul-alpine-jdk-erbium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          - path: 11/jdk/16
+            tags: 11-jdk-16,11-jdk-gallium,jdk-16,jdk-16-gallium,11-jdk,jdk
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 11/jdk/14/alpine
-            tags: alpine-jdk-14,alpine-jdk-fermium,azul-alpine-jdk-14,azul-alpine-jdk-fermium,11-alpine-jdk-14,11-alpine-jdk-fermium,11-azul-alpine-jdk-14,11-azul-alpine-jdk-fermium,alpine-jdk,azul-alpine-jdk,11-alpine-jdk,11-azul-alpine-jdk
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-
-          - path: 11/jre/12
-            tags: 11-12,11-erbium,11-jre-12,11-jre-erbium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-
-          - path: 11/jre/14
-            tags: 11-14,11-fermium,11-jre-14,11-jre-fermium,latest,11,11-jre
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
-
-          - path: 11/jre/12/alpine
-            tags: 11-alpine-12,11-alpine-erbium,11-alpine-jre-12,11-alpine-jre-erbium,11-azul-alpine-12,11-azul-alpine-erbium,11-azul-alpine-jre-12,11-azul-alpine-jre-erbium,alpine-12,alpine-erbium,alpine-jre-12,alpine-jre-erbium,azul-alpine-12,azul-alpine-erbium,azul-alpine-jre-12,azul-alpine-jre-erbium
+            tags: alpine-jdk-14,alpine-jdk-fermium,temurin-alpine-jdk-14,temurin-alpine-jdk-fermium,11-alpine-jdk-14,11-alpine-jdk-fermium,11-temurin-alpine-jdk-14,11-temurin-alpine-jdk-fermium
             platforms: linux/amd64
 
+          - path: 11/jdk/16/alpine
+            tags: alpine-jdk-16,alpine-jdk-gallium,temurin-alpine-jdk-16,temurin-alpine-jdk-gallium,11-alpine-jdk-16,11-alpine-jdk-gallium,11-temurin-alpine-jdk-16,11-temurin-alpine-jdk-gallium,alpine-jdk,temurin-alpine-jdk,11-alpine-jdk,11-temurin-alpine-jdk
+            platforms: linux/amd64
+
+          - path: 11/jre/14
+            tags: 11-14,11-fermium,11-jre-14,11-jre-fermium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 11/jre/16
+            tags: 11-16,11-gallium,11-jre-16,11-jre-gallium,latest,11,11-jre
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
           - path: 11/jre/14/alpine
-            tags: 11-alpine-14,11-alpine-fermium,11-alpine-jre-14,11-alpine-jre-fermium,11-azul-alpine-14,11-azul-alpine-fermium,11-azul-alpine-jre-14,11-azul-alpine-jre-fermium,alpine-14,alpine-fermium,alpine-jre-14,alpine-jre-fermium,azul-alpine-14,azul-alpine-fermium,azul-alpine-jre-14,azul-alpine-jre-fermium,11-alpine,11-alpine-jre,11-azul-alpine,11-azul-alpine-jre,alpine,alpine-jre,azul-alpine,azul-alpine-jre
+            tags: 11-alpine-14,11-alpine-fermium,11-alpine-jre-14,11-alpine-jre-fermium,11-temurin-alpine-14,11-temurin-alpine-fermium,11-temurin-alpine-jre-14,11-temurin-alpine-jre-fermium,alpine-14,alpine-fermium,alpine-jre-14,alpine-jre-fermium,temurin-alpine-14,temurin-alpine-fermium,temurin-alpine-jre-14,temurin-alpine-jre-fermium
+            platforms: linux/amd64
+
+          - path: 11/jre/16/alpine
+            tags: 11-alpine-16,11-alpine-gallium,11-alpine-jre-16,11-alpine-jre-gallium,11-temurin-alpine-16,11-temurin-alpine-gallium,11-temurin-alpine-jre-16,11-temurin-alpine-jre-gallium,alpine-16,alpine-gallium,alpine-jre-16,alpine-jre-gallium,temurin-alpine-16,temurin-alpine-gallium,temurin-alpine-jre-16,temurin-alpine-jre-gallium,11-alpine,11-alpine-jre,11-temurin-alpine,11-temurin-alpine-jre,alpine,alpine-jre,temurin-alpine,temurin-alpine-jre
             platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Workaround Docker bug in runner
+        run: |
+          sudo rm /etc/docker/daemon.json
+          sudo systemctl restart docker
 
       - name: Prepare
         id: prepare
