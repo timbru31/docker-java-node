@@ -95,6 +95,8 @@ jobs:
 
           #sudo add-apt-repository ppa:jacob/virtualisation
           #sudo apt-get update && sudo apt-get install qemu qemu-user qemu-user-static
+          sudo rm /etc/docker/daemon.json
+          sudo systemctl restart docker
 
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
