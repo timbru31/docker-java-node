@@ -21,11 +21,11 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 8/jdk/14/alpine
-            tags: 8-alpine-jdk-14,8-alpine-jdk-fermium,8-temurin-alpine-jdk-14,8-temurin-alpine-jdk-fermium
+            tags: 8-alpine-jdk-14,8-alpine-jdk-fermium
             platforms: linux/amd64
 
           - path: 8/jdk/16/alpine
-            tags: 8-alpine-jdk-16,8-alpine-jdk-gallium,8-temurin-alpine-jdk-16,8-temurin-alpine-jdk-gallium,8-alpine-jdk,8-temurin-alpine-jdk
+            tags: 8-alpine-jdk-16,8-alpine-jdk-gallium,8-alpine-jdk
             platforms: linux/amd64
 
           - path: 8/jre/14
@@ -37,27 +37,27 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 8/jre/14/alpine
-            tags: 8-alpine-14,8-alpine-fermium,8-temurin-alpine-14,8-temurin-alpine-fermium,8-alpine-jre-14,8-alpine-jre-fermium,8-temurin-alpine-jre-14,8-temurin-alpine-jre-fermium
+            tags: 8-alpine-14,8-alpine-fermium,8-alpine-jre-14,8-alpine-jre-fermium
             platforms: linux/amd64
 
           - path: 8/jre/16/alpine
-            tags: 8-alpine-16,8-alpine-gallium,8-temurin-alpine-16,8-temurin-alpine-gallium,8-alpine-jre-16,8-alpine-jre-gallium,8-temurin-alpine-jre-16,8-temurin-alpine-jre-gallium,8-alpine,8-temurin-alpine,8-alpine-jre,8-temurin-alpine-jre
+            tags: 8-alpine-16,8-alpine-gallium,8-alpine-jre-16,8-alpine-jre-gallium,8-alpine,8-alpine-jre
             platforms: linux/amd64
 
           - path: 11/jdk/14
-            tags: 11-jdk-14,11-jdk-fermium,jdk-14,jdk-14-fermium
+            tags: 11-jdk-14,11-jdk-fermium
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 11/jdk/16
-            tags: 11-jdk-16,11-jdk-gallium,jdk-16,jdk-16-gallium,11-jdk,jdk
+            tags: 11-jdk-16,11-jdk-gallium,11-jdk
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 11/jdk/14/alpine
-            tags: alpine-jdk-14,alpine-jdk-fermium,temurin-alpine-jdk-14,temurin-alpine-jdk-fermium,11-alpine-jdk-14,11-alpine-jdk-fermium,11-temurin-alpine-jdk-14,11-temurin-alpine-jdk-fermium
+            tags: 11-alpine-jdk-14,11-alpine-jdk-fermium
             platforms: linux/amd64
 
           - path: 11/jdk/16/alpine
-            tags: alpine-jdk-16,alpine-jdk-gallium,temurin-alpine-jdk-16,temurin-alpine-jdk-gallium,11-alpine-jdk-16,11-alpine-jdk-gallium,11-temurin-alpine-jdk-16,11-temurin-alpine-jdk-gallium,alpine-jdk,temurin-alpine-jdk,11-alpine-jdk,11-temurin-alpine-jdk
+            tags: 11-alpine-jdk-16,11-alpine-jdk-gallium,11-alpine-jdk
             platforms: linux/amd64
 
           - path: 11/jre/14
@@ -65,15 +65,47 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 11/jre/16
-            tags: 11-16,11-gallium,11-jre-16,11-jre-gallium,latest,11,11-jre
+            tags: 11-16,11-gallium,11-jre-16,11-jre-gallium,11,11-jre
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 11/jre/14/alpine
-            tags: 11-alpine-14,11-alpine-fermium,11-alpine-jre-14,11-alpine-jre-fermium,11-temurin-alpine-14,11-temurin-alpine-fermium,11-temurin-alpine-jre-14,11-temurin-alpine-jre-fermium,alpine-14,alpine-fermium,alpine-jre-14,alpine-jre-fermium,temurin-alpine-14,temurin-alpine-fermium,temurin-alpine-jre-14,temurin-alpine-jre-fermium
+            tags: 11-alpine-14,11-alpine-fermium,11-alpine-jre-14,11-alpine-jre-fermium
             platforms: linux/amd64
 
           - path: 11/jre/16/alpine
-            tags: 11-alpine-16,11-alpine-gallium,11-alpine-jre-16,11-alpine-jre-gallium,11-temurin-alpine-16,11-temurin-alpine-gallium,11-temurin-alpine-jre-16,11-temurin-alpine-jre-gallium,alpine-16,alpine-gallium,alpine-jre-16,alpine-jre-gallium,temurin-alpine-16,temurin-alpine-gallium,temurin-alpine-jre-16,temurin-alpine-jre-gallium,11-alpine,11-alpine-jre,11-temurin-alpine,11-temurin-alpine-jre,alpine,alpine-jre,temurin-alpine,temurin-alpine-jre
+            tags: 11-alpine-16,11-alpine-gallium,11-alpine-jre-16,11-alpine-jre-gallium,11-alpine,11-alpine-jre
+            platforms: linux/amd64
+
+          - path: 17/jdk/14
+            tags: 17-jdk-14,17-jdk-fermium,jdk-14,jdk-14-fermium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 17/jdk/16
+            tags: 17-jdk-16,17-jdk-gallium,jdk-16,jdk-16-gallium,17-jdk,jdk
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 17/jdk/14/alpine
+            tags: alpine-jdk-14,alpine-jdk-fermium,17-alpine-jdk-14,17-alpine-jdk-fermium
+            platforms: linux/amd64
+
+          - path: 17/jdk/16/alpine
+            tags: alpine-jdk-16,alpine-jdk-gallium,17-alpine-jdk-16,17-alpine-jdk-gallium,alpine-jdk,17-alpine-jdk
+            platforms: linux/amd64
+
+          - path: 17/jre/14
+            tags: 17-14,17-fermium,17-jre-14,17-jre-fermium
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 17/jre/16
+            tags: 17-16,17-gallium,17-jre-16,17-jre-gallium,latest,17,17-jre,jre
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 17/jre/14/alpine
+            tags: 17-alpine-14,17-alpine-fermium,17-alpine-jre-14,17-alpine-jre-fermium,alpine-14,alpine-fermium,alpine-jre-14,alpine-jre-fermium
+            platforms: linux/amd64
+
+          - path: 17/jre/16/alpine
+            tags: 17-alpine-16,17-alpine-gallium,17-alpine-jre-16,17-alpine-jre-gallium,alpine-16,alpine-gallium,alpine-jre-16,alpine-jre-gallium,17-alpine,17-alpine-jre,alpine,alpine-jre
             platforms: linux/amd64
     steps:
       - name: Checkout
