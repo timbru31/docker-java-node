@@ -8,11 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: |
-          echo "JDK8 with Node.js 14"
-          docker run -i $(docker build -q 8/jdk/14) /bin/sh -c "java -version && node --version"
-          echo "JDK8 alpine with Node.js 14"
-          docker run -i $(docker build -q 8/jdk/14/alpine) /bin/sh -c "java -version && node --version"
+        run: 
 
           echo "\n JDK8 with Node.js 16"
           docker run -i $(docker build -q 8/jdk/16) /bin/sh -c "java -version && node --version"
@@ -24,11 +20,6 @@ jobs:
           echo "\n JDK8 alpine with Node.js 18"
           docker run -i $(docker build -q 8/jdk/18/alpine) /bin/sh -c "java -version && node --version"
 
-          echo "\n JRE8 with Node.js 14"
-          docker run -i $(docker build -q 8/jre/14) /bin/sh -c "java -version && node --version"
-          echo "\n JRE8 alpine with Node.js 14"
-          docker run -i $(docker build -q 8/jre/14/alpine) /bin/sh -c "java -version && node --version"
-
           echo "\n JRE8 with Node.js 16"
           docker run -i $(docker build -q 8/jre/16) /bin/sh -c "java -version && node --version"
           echo "\n JRE8 alpine with Node.js 16"
@@ -38,11 +29,6 @@ jobs:
           docker run -i $(docker build -q 8/jre/18) /bin/sh -c "java -version && node --version"
           echo "\n JRE8 alpine with Node.js 18"
           docker run -i $(docker build -q 8/jre/18/alpine) /bin/sh -c "java -version && node --version"
-
-          echo "\n JDK11 with Node.js 14"
-          docker run -i $(docker build -q 11/jdk/14) /bin/sh -c "java -version && node --version"
-          echo "\n JDK11 alpine with Node.js 14"
-          docker run -i $(docker build -q 11/jdk/14/alpine) /bin/sh -c "java -version && node --version"
 
           echo "\n JDK11 with Node.js 16"
           docker run -i $(docker build -q 11/jdk/16) /bin/sh -c "java -version && node --version"
@@ -54,11 +40,6 @@ jobs:
           echo "\n JDK11 alpine with Node.js 18"
           docker run -i $(docker build -q 11/jdk/18/alpine) /bin/sh -c "java -version && node --version"
 
-          echo "\n JRE11 with Node.js 14"
-          docker run -i $(docker build -q 11/jre/14) /bin/sh -c "java -version && node --version"
-          echo "\n JRE11 alpine with Node.js 14"
-          docker run -i $(docker build -q 11/jre/14/alpine) /bin/sh -c "java -version && node --version"
-
           echo "\n JRE11 with Node.js 16"
           docker run -i $(docker build -q 11/jre/16) /bin/sh -c "java -version && node --version"
           echo "\n JRE11 alpine with Node.js 16"
@@ -69,11 +50,6 @@ jobs:
           echo "\n JRE11 alpine with Node.js 18"
           docker run -i $(docker build -q 11/jre/18/alpine) /bin/sh -c "java -version && node --version"
 
-          echo "\n JDK17 with Node.js 14"
-          docker run -i $(docker build -q 17/jdk/14) /bin/sh -c "java -version && node --version"
-          echo "\n JDK17 alpine with Node.js 14"
-          docker run -i $(docker build -q 17/jdk/14/alpine) /bin/sh -c "java -version && node --version"
-
           echo "\n JDK17 with Node.js 16"
           docker run -i $(docker build -q 17/jdk/16) /bin/sh -c "java -version && node --version"
           echo "\n JDK17 alpine with Node.js 16"
@@ -83,11 +59,6 @@ jobs:
           docker run -i $(docker build -q 17/jdk/18) /bin/sh -c "java -version && node --version"
           echo "\n JDK17 alpine with Node.js 18"
           docker run -i $(docker build -q 17/jdk/18/alpine) /bin/sh -c "java -version && node --version"
-
-          echo "\n JRE17 with Node.js 14"
-          docker run -i $(docker build -q 17/jre/14) /bin/sh -c "java -version && node --version"
-          echo "\n JRE17 alpine with Node.js 14"
-          docker run -i $(docker build -q 17/jre/14/alpine) /bin/sh -c "java -version && node --version"
 
           echo "\n JRE17 with Node.js 16"
           docker run -i $(docker build -q 17/jre/16) /bin/sh -c "java -version && node --version"
