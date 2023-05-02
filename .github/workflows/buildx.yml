@@ -121,22 +121,22 @@ jobs:
         run: |
           DOCKER_IMAGE=timbru31/java-node
 
-          TEMP="${{ matrix.docker-file.tags }"}""
+          TEMP="${{ matrix.docker-file.tags }}"
           TAGZ=($TEMP)
           VERSION=${TAGZ[0]}
 
           for i in "${!TAGZ[@]}"; do
             if [ "$i" -eq "0" ];
             then
-              TAGS=""${DOCKER_IMAGE}:${TAGZ[$i]}""
+              TAGS="${DOCKER_IMAGE}:${TAGZ[$i]}"
             else
-              TAGS=""${TAGS},"${DOCKER_IMAGE}:${TAGZ[$i]}""
+              TAGS="${TAGS},${DOCKER_IMAGE}:${TAGZ[$i]}"
             fi
           done
 
           echo "docker_image=${DOCKER_IMAGE}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
-          echo "tags=$"{TAGS}"" >> $GITHUB_OUTPUT"
+          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2.1.0
