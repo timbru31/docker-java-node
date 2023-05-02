@@ -14,15 +14,15 @@ jobs:
         docker-file:
           - path: 8/jdk/14
             tags: 8-jdk-14,8-jdk-fermium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v8
 
           - path: 8/jdk/16
             tags: 8-jdk,8-jdk-16,8-jdk-gallium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v8
 
           - path: 8/jdk/18
             tags: 8-jdk-18,8-jdk-hydrogen
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v8
 
           - path: 8/jdk/14/alpine
             tags: 8-alpine-jdk-14,8-alpine-jdk-fermium
@@ -38,15 +38,15 @@ jobs:
 
           - path: 8/jre/14
             tags: 8-jre-14,8-jre-fermium,8-14,8-fermium
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v8
 
           - path: 8/jre/16
             tags: 8-jre-16,8-jre-gallium,8-16,8-gallium,8-jre,8
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v8
 
           - path: 8/jre/18
             tags: 8-jre-18,8-jre-hydrogen,8-18,8-hydrogen
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v8
 
           - path: 8/jre/14/alpine
             tags: 8-alpine-14,8-alpine-fermium,8-alpine-jre-14,8-alpine-jre-fermium
