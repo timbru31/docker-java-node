@@ -8,8 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: 
-
+        run: |
           echo "\n JDK8 with Node.js 16"
           docker run -i $(docker build -q 8/jdk/16) /bin/sh -c "java -version && node --version"
           echo "\n JDK8 alpine with Node.js 16"
