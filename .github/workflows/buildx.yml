@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "37 04 * * *"
   push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   buildx:
