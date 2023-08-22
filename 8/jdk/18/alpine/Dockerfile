@@ -6,7 +6,7 @@ ENV REFRESHED_AT $REFRESHED_AT
 
 RUN apk -U upgrade \
   && apk add --no-cache \
-    nodejs \
+    "nodejs<20" \
     npm \
     yarn \
     curl
