@@ -11,7 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.0.0
+
       - name: Build the Docker image
         run: |
           printf "JDK8 with Node.js 16\n"
@@ -84,6 +85,6 @@ jobs:
 
     steps:
       - name: Automatically merge dependabot upgrades
-        uses: fastify/github-action-merge-dependabot@v3
+        uses: fastify/github-action-merge-dependabot@v3.9.1
         with:
           target: minor
