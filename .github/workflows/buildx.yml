@@ -15,97 +15,49 @@ jobs:
       fail-fast: false
       matrix:
         docker-file:
-          - path: 8/jdk/16
-            tags: "8-jdk 8-jdk-16 8-jdk-gallium"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
           - path: 8/jdk/18
             tags: "8-jdk-18 8-jdk-hydrogen"
             platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 8/jdk/16/alpine
-            tags: "8-alpine-jdk-16 8-alpine-jdk-gallium 8-alpine-jdk"
-            platforms: linux/amd64
 
           - path: 8/jdk/18/alpine
             tags: "8-alpine-jdk-18 8-alpine-jdk-hydrogen"
             platforms: linux/amd64
 
-          - path: 8/jre/16
-            tags: "8-jre-16 8-jre-gallium 8-16 8-gallium 8-jre 8"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
           - path: 8/jre/18
             tags: "8-jre-18 8-jre-hydrogen 8-18 8-hydrogen"
             platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 8/jre/16/alpine
-            tags: "8-alpine-16 8-alpine-gallium 8-alpine-jre-16 8-alpine-jre-gallium 8-alpine 8-alpine-jre"
-            platforms: linux/amd64
 
           - path: 8/jre/18/alpine
             tags: "8-alpine-18 8-alpine-hydrogen 8-alpine-jre-18 8-alpine-jre-hydrogen"
             platforms: linux/amd64
 
-          - path: 11/jdk/16
-            tags: "11-jdk-16 11-jdk-gallium 11-jdk"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
           - path: 11/jdk/18
             tags: "11-jdk-18 11-jdk-hydrogen"
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 11/jdk/16/alpine
-            tags: "11-alpine-jdk-16 11-alpine-jdk-gallium 11-alpine-jdk"
-            platforms: linux/amd64
 
           - path: 11/jdk/18/alpine
             tags: "11-alpine-jdk-18 11-alpine-jdk-hydrogen"
             platforms: linux/amd64
 
-          - path: 11/jre/16
-            tags: "11-16 11-gallium 11-jre-16 11-jre-gallium 11 11-jre"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
           - path: 11/jre/18
             tags: "11-18 11-hydrogen 11-jre-18 11-jre-hydrogen"
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 11/jre/16/alpine
-            tags: "11-alpine-16 11-alpine-gallium 11-alpine-jre-16 11-alpine-jre-gallium 11-alpine 11-alpine-jre"
-            platforms: linux/amd64
 
           - path: 11/jre/18/alpine
             tags: "11-alpine-18 11-alpine-hydrogen 11-alpine-jre-18 11-alpine-jre-hydrogen"
             platforms: linux/amd64
 
-          - path: 17/jdk/16
-            tags: "17-jdk-16 17-jdk-gallium jdk-16 jdk-16-gallium 17-jdk jdk"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
           - path: 17/jdk/18
             tags: "17-jdk-18 17-jdk-hydrogen jdk-18 jdk-18-hydrogen"
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 17/jdk/16/alpine
-            tags: "alpine-jdk-16 alpine-jdk-gallium 17-alpine-jdk-16 17-alpine-jdk-gallium alpine-jdk 17-alpine-jdk"
-            platforms: linux/amd64
 
           - path: 17/jdk/18/alpine
             tags: "alpine-jdk-18 alpine-jdk-hydrogen 17-alpine-jdk-18 17-alpine-jdk-hydrogen"
             platforms: linux/amd64
 
-          - path: 17/jre/16
-            tags: "17-16 17-gallium 17-jre-16 17-jre-gallium latest 17 17-jre jre"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
           - path: 17/jre/18
             tags: "17-18 17-hydrogen 17-jre-18 17-jre-hydrogen"
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 17/jre/16/alpine
-            tags: "17-alpine-16 17-alpine-gallium 17-alpine-jre-16 17-alpine-jre-gallium alpine-16 alpine-gallium alpine-jre-16 alpine-jre-gallium 17-alpine 17-alpine-jre alpine alpine-jre"
-            platforms: linux/amd64
 
           - path: 17/jre/18/alpine
             tags: "17-alpine-18 17-alpine-hydrogen 17-alpine-jre-18 17-alpine-jre-hydrogen alpine-18 alpine-hydrogen alpine-jre-18 alpine-jre-hydrogen"
