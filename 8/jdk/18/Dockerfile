@@ -7,7 +7,8 @@ ARG NODE_MAJOR=18
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN mkdir -p /etc/apt/keyrings \
+RUN printf 'Package: nodejs\nPin: origin deb.nodesource.com\nPin-Priority: 1001' > /etc/apt/preferences.d/nodesource \
+  && mkdir -p /etc/apt/keyrings \
   && apt-get update -qq \
   && apt-get install -qq --no-install-recommends \
     gpg \
