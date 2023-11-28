@@ -92,7 +92,7 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 17/jdk/20/alpine
-            tags: "alpine-jdk-20 alpine-jdk-iron 17-alpine-jdk-20 17-alpine-jdk-iron"
+            tags: "17-alpine-jdk-20 17-alpine-jdk-iron"
             platforms: linux/amd64
 
           - path: 17/jre/18
@@ -100,7 +100,7 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 17/jre/18/alpine
-            tags: "17-alpine-18 17-alpine-hydrogen 17-alpine-jre-18 17-alpine-jre-hydrogen alpine-18 alpine-hydrogen alpine-jre-18 alpine-jre-hydrogen"
+            tags: "17-alpine-18 17-alpine-hydrogen 17-alpine-jre-18 17-alpine-jre-hydrogen"
             platforms: linux/amd64
 
           - path: 17/jre/20
@@ -108,7 +108,39 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
           - path: 17/jre/20/alpine
-            tags: "17-alpine-20 17-alpine-iron 17-alpine-jre-20 17-alpine-jre-iron alpine-20 alpine-iron alpine-jre-20 alpine-jre-iron"
+            tags: "17-alpine-20 17-alpine-iron 17-alpine-jre-20 17-alpine-jre-iron"
+            platforms: linux/amd64
+
+          - path: 21/jdk/18
+            tags: "21-jdk-18 21-jdk-hydrogen jdk-18 jdk-18-hydrogen"
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 21/jdk/18/alpine
+            tags: "alpine-jdk-18 alpine-jdk-hydrogen 21-alpine-jdk-18 21-alpine-jdk-hydrogen"
+            platforms: linux/amd64
+
+          - path: 21/jdk/20
+            tags: "21-jdk-20 21-jdk-iron jdk-20 jdk-20-iron"
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 21/jdk/20/alpine
+            tags: "alpine-jdk-20 alpine-jdk-iron 21-alpine-jdk-20 21-alpine-jdk-iron"
+            platforms: linux/amd64
+
+          - path: 21/jre/18
+            tags: "21-18 21-hydrogen 21-jre-18 21-jre-hydrogen"
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 21/jre/18/alpine
+            tags: "21-alpine-18 21-alpine-hydrogen 21-alpine-jre-18 21-alpine-jre-hydrogen alpine-18 alpine-hydrogen alpine-jre-18 alpine-jre-hydrogen"
+            platforms: linux/amd64
+
+          - path: 21/jre/20
+            tags: "21-20 21-iron 21-jre-20 21-jre-iron"
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
+
+          - path: 21/jre/20/alpine
+            tags: "21-alpine-20 21-alpine-iron 21-alpine-jre-20 21-alpine-jre-iron alpine-20 alpine-iron alpine-jre-20 alpine-jre-iron"
             platforms: linux/amd64
     steps:
       - name: Checkout

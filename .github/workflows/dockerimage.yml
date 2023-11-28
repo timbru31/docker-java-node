@@ -75,14 +75,14 @@ jobs:
           printf "\n\nJRE17 alpine with Node.js 20\n"
           docker run -i $(docker build -q 17/jre/20/alpine) /bin/sh -c "java -version && node --version"
 
-          printf "\n\JDK21 with Node.js 18\n"
+          printf "\n\nJDK21 with Node.js 18\n"
           docker run -i $(docker build -q 21/jdk/18) /bin/sh -c "java -version && node --version"
-          printf "\n\JDK21 alpine with Node.js 18\n"
+          printf "\n\nJDK21 alpine with Node.js 18\n"
           docker run -i $(docker build -q 21/jdk/18/alpine) /bin/sh -c "java -version && node --version"
 
-          printf "\n\JDK21 with Node.js 20\n"
+          printf "\n\nJDK21 with Node.js 20\n"
           docker run -i $(docker build -q 21/jdk/20) /bin/sh -c "java -version && node --version"
-          printf "\n\JDK21 alpine with Node.js 20\n"
+          printf "\n\nJDK21 alpine with Node.js 20\n"
           docker run -i $(docker build -q 21/jdk/20/alpine) /bin/sh -c "java -version && node --version"
 
           printf "\n\nJRE21 with Node.js 18\n"
