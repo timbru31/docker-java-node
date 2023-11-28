@@ -20,7 +20,7 @@ These Dockerfiles leverage the new `buildx` functionality and offer the followin
 
 - linux/amd64
 - linux/arm64 (not for alpine)
-- linux/arm/v8 (not for alpine)
+- linux/arm/v7 (not for alpine, not for Java 21)
 - linux/ppc64le (not for alpine)
 
 ---
