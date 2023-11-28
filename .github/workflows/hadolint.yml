@@ -15,5 +15,5 @@ jobs:
       - run: brew install hadolint
 
       - run: |
-          hadolint {8,11,17}/**/**/*Dockerfile
-          hadolint {8,11,17}/**/**/**/*Dockerfile
+          hadolint {8,11,17,21}/**/**/*Dockerfile
+          hadolint {8,11,17,21}/**/**/**/*Dockerfile
