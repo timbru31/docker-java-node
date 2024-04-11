@@ -11,4 +11,5 @@ RUN echo @old-stable https://dl-cdn.alpinelinux.org/alpine/v3.18/community >> /e
     nodejs@old-stable \
     npm@old-stable \
     yarn \
-    curl
+    curl \
+    git

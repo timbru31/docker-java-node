@@ -9,4 +9,5 @@ RUN apk -U upgrade \
     nodejs \
     npm \
     yarn \
-    curl
+    curl \
+    git
