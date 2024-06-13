@@ -144,7 +144,7 @@ jobs:
             platforms: linux/amd64
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
 
       - name: Workaround Docker bug in runner
         run: |
