@@ -186,7 +186,7 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
 
       - name: Docker Buildx (build)
-        uses: docker/build-push-action@v6.1.0
+        uses: docker/build-push-action@v6.2.0
         if: success() && !contains(github.ref, 'master')
         with:
           push: false
@@ -204,7 +204,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Buildx (push)
-        uses: docker/build-push-action@v6.1.0
+        uses: docker/build-push-action@v6.2.0
         if: success() && github.event_name != 'pull_request' && contains(github.ref, 'master')
         with:
           push: true
