@@ -14,156 +14,54 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        docker-file:
-          - path: 8/jdk/18
-            tags: "8-jdk-18 8-jdk-hydrogen"
+        java-version: [8, 11, 17, 21]
+        java-type: [jdk, jre]
+        node-version: [18, 20, 22]
+        variant: [default, alpine]
+        include:
+          - variant: default
             platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 8/jdk/18/alpine
-            tags: "8-alpine-jdk-18 8-alpine-jdk-hydrogen"
+          - variant: alpine
             platforms: linux/amd64
-
-          - path: 8/jdk/20
-            tags: "8-jdk-20 8-jdk-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 8/jdk/20/alpine
-            tags: "8-alpine-jdk-20 8-alpine-jdk-iron"
-            platforms: linux/amd64
-
-          - path: 8/jre/18
-            tags: "8-jre-18 8-jre-hydrogen 8-18 8-hydrogen"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 8/jre/18/alpine
-            tags: "8-alpine-18 8-alpine-hydrogen 8-alpine-jre-18 8-alpine-jre-hydrogen"
-            platforms: linux/amd64
-
-          - path: 8/jre/20
-            tags: "8-jre-20 8-jre-iron 8-20 8-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 8/jre/20/alpine
-            tags: "8-alpine-20 8-alpine-iron 8-alpine-jre-20 8-alpine-jre-iron"
-            platforms: linux/amd64
-
-          - path: 11/jdk/18
-            tags: "11-jdk-18 11-jdk-hydrogen"
+          - java-version: 11
+            variant: default
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
-          - path: 11/jdk/18/alpine
-            tags: "11-alpine-jdk-18 11-alpine-jdk-hydrogen"
-            platforms: linux/amd64
-
-          - path: 11/jdk/20
-            tags: "11-jdk-20 11-jdk-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 11/jdk/20/alpine
-            tags: "11-alpine-jdk-20 11-alpine-jdk-iron"
-            platforms: linux/amd64
-
-          - path: 11/jre/18
-            tags: "11-18 11-hydrogen 11-jre-18 11-jre-hydrogen"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 11/jre/18/alpine
-            tags: "11-alpine-18 11-alpine-hydrogen 11-alpine-jre-18 11-alpine-jre-hydrogen"
-            platforms: linux/amd64
-
-          - path: 11/jre/20
-            tags: "11-20 11-iron 11-jre-20 11-jre-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 11/jre/20/alpine
-            tags: "11-alpine-20 11-alpine-iron 11-alpine-jre-20 11-alpine-jre-iron"
-            platforms: linux/amd64
-
-          - path: 17/jdk/18
-            tags: "17-jdk-18 17-jdk-hydrogen jdk-18 jdk-18-hydrogen"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 17/jdk/18/alpine
-            tags: "alpine-jdk-18 alpine-jdk-hydrogen 17-alpine-jdk-18 17-alpine-jdk-hydrogen"
-            platforms: linux/amd64
-
-          - path: 17/jdk/20
-            tags: "17-jdk-20 17-jdk-iron jdk-20 jdk-20-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 17/jdk/20/alpine
-            tags: "17-alpine-jdk-20 17-alpine-jdk-iron"
-            platforms: linux/amd64
-
-          - path: 17/jre/18
-            tags: "17-18 17-hydrogen 17-jre-18 17-jre-hydrogen"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 17/jre/18/alpine
-            tags: "17-alpine-18 17-alpine-hydrogen 17-alpine-jre-18 17-alpine-jre-hydrogen"
-            platforms: linux/amd64
-
-          - path: 17/jre/20
-            tags: "17-20 17-iron 17-jre-20 17-jre-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
-
-          - path: 17/jre/20/alpine
-            tags: "17-alpine-20 17-alpine-iron 17-alpine-jre-20 17-alpine-jre-iron"
-            platforms: linux/amd64
-
-          - path: 21/jdk/18
-            tags: "21-jdk-18 21-jdk-hydrogen jdk-18 jdk-18-hydrogen"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 21/jdk/18/alpine
-            tags: "alpine-jdk-18 alpine-jdk-hydrogen 21-alpine-jdk-18 21-alpine-jdk-hydrogen"
-            platforms: linux/amd64
-
-          - path: 21/jdk/20
-            tags: "21-jdk-20 21-jdk-iron jdk-20 jdk-20-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 21/jdk/20/alpine
-            tags: "alpine-jdk-20 alpine-jdk-iron 21-alpine-jdk-20 21-alpine-jdk-iron"
-            platforms: linux/amd64
-
-          - path: 21/jre/18
-            tags: "21-18 21-hydrogen 21-jre-18 21-jre-hydrogen"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 21/jre/18/alpine
-            tags: "21-alpine-18 21-alpine-hydrogen 21-alpine-jre-18 21-alpine-jre-hydrogen alpine-18 alpine-hydrogen alpine-jre-18 alpine-jre-hydrogen"
-            platforms: linux/amd64
-
-          - path: 21/jre/20
-            tags: "21-20 21-iron 21-jre-20 21-jre-iron"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le
-
-          - path: 21/jre/20/alpine
-            tags: "21-alpine-20 21-alpine-iron 21-alpine-jre-20 21-alpine-jre-iron alpine-20 alpine-iron alpine-jre-20 alpine-jre-iron"
-            platforms: linux/amd64
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v4.2.2
+
+      - name: Set Node.js codename
+        id: nodename
+        run: |
+          case "${{ matrix.node-version }}" in
+            "18") echo "codename=hydrogen" >> $GITHUB_OUTPUT ;;
+            "20") echo "codename=iron" >> $GITHUB_OUTPUT ;;
+            "22") echo "codename=jod" >> $GITHUB_OUTPUT ;;
+            "24") echo "codename=krypton" >> $GITHUB_OUTPUT ;;
+            "26") echo "codename=lithium" >> $GITHUB_OUTPUT ;;
+            "28") echo "codename=magnesium" >> $GITHUB_OUTPUT ;;
+          esac
 
       - name: Prepare
         id: prepare
         run: |
           DOCKER_IMAGE=timbru31/java-node
-
-          TEMP="${{ matrix.docker-file.tags }}"
-          TAGZ=($TEMP)
-          VERSION=${TAGZ[0]}
-
-          for i in "${!TAGZ[@]}"; do
-            if [ "$i" -eq "0" ];
-            then
-              TAGS="${DOCKER_IMAGE}:${TAGZ[$i]}"
-            else
-              TAGS="${TAGS},${DOCKER_IMAGE}:${TAGZ[$i]}"
-            fi
-          done
-
+          VERSION="${{ matrix.java-version }}"
+          NODE_CODENAME=${{ steps.nodename.outputs.codename }}
+          VARIANT="${{ matrix.variant == 'alpine' && '-alpine' || '' }}"
+          TYPE="${{ matrix.java-type }}"
+          
+          # Generate tag combinations
+          if [ "$TYPE" = "jdk" ]; then
+            TAGS="${DOCKER_IMAGE}:${VERSION}${VARIANT}-jdk-${{ matrix.node-version }}"
+            TAGS="${TAGS},${DOCKER_IMAGE}:${VERSION}${VARIANT}-jdk-${NODE_CODENAME}"
+          else
+            TAGS="${DOCKER_IMAGE}:${VERSION}${VARIANT}-${{ matrix.node-version }}"
+            TAGS="${TAGS},${DOCKER_IMAGE}:${VERSION}${VARIANT}-${NODE_CODENAME}"
+            TAGS="${TAGS},${DOCKER_IMAGE}:${VERSION}${VARIANT}-jre-${{ matrix.node-version }}"
+            TAGS="${TAGS},${DOCKER_IMAGE}:${VERSION}${VARIANT}-jre-${NODE_CODENAME}"
+          fi
+          
           echo "docker_image=${DOCKER_IMAGE}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "tags=${TAGS}" >> $GITHUB_OUTPUT
@@ -177,18 +75,15 @@ jobs:
         with:
           install: true
 
-      - name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
-
       - name: Docker Buildx (build)
         uses: docker/build-push-action@v6.12.0
         if: success() && !contains(github.ref, 'master')
         with:
           push: false
-          context: ./${{ matrix.docker-file.path }}
-          file: ./${{ matrix.docker-file.path }}/Dockerfile
+          context: ./${{ matrix.java-version }}/${{ matrix.java-type }}/${{ matrix.node-version }}${{ matrix.variant == 'alpine' && '/alpine' || '' }}
+          file: ./${{ matrix.java-version }}/${{ matrix.java-type }}/${{ matrix.node-version }}${{ matrix.variant == 'alpine' && '/alpine' || '' }}/Dockerfile
           build-args: REFRESHED_AT=$(date +%Y-%m-%d)
-          platforms: ${{ matrix.docker-file.platforms }}
+          platforms: ${{ matrix.platforms }}
           tags: ${{ steps.prepare.outputs.tags }}
 
       - name: Docker Login
@@ -203,10 +98,10 @@ jobs:
         if: success() && github.event_name != 'pull_request' && contains(github.ref, 'master')
         with:
           push: true
-          context: ./${{ matrix.docker-file.path }}
-          file: ./${{ matrix.docker-file.path }}/Dockerfile
+          context: ./${{ matrix.java-version }}/${{ matrix.java-type }}/${{ matrix.node-version }}${{ matrix.variant == 'alpine' && '/alpine' || '' }}
+          file: ./${{ matrix.java-version }}/${{ matrix.java-type }}/${{ matrix.node-version }}${{ matrix.variant == 'alpine' && '/alpine' || '' }}/Dockerfile
           build-args: REFRESHED_AT=$(date +%Y-%m-%d)
-          platforms: ${{ matrix.docker-file.platforms }}
+          platforms: ${{ matrix.platforms }}
           tags: ${{ steps.prepare.outputs.tags }}
 
       - name: Inspect Image
