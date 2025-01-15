@@ -1,12 +1,5 @@
 name: Test Docker image
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,9 +16,9 @@ jobs:
         run: |
           VARIANT_PATH="${{ matrix.variant == 'alpine' && '/alpine' || '' }}"
           IMAGE_PATH="${{ matrix.java-version }}/${{ matrix.java-type }}/${{ matrix.node-version }}${VARIANT_PATH}"
-
           VARIANT_LABEL="${{ matrix.variant == 'alpine' && ' alpine' || '' }}"
-          printf "\n\n${{ matrix.java-type | upper }}${{ matrix.java-version }} with Node.js ${{ matrix.node-version }}${VARIANT_LABEL}\n"
+          JAVA_TYPE=$(echo "${{ matrix.java-type }}" | tr '[:lower:]' '[:upper:]')
+          printf "\n\n${JAVA_TYPE}${{ matrix.java-version }} with Node.js ${{ matrix.node-version }}${VARIANT_LABEL}\n"
 
           # Run container and capture version outputs
           VERSIONS=$(docker run -i $(docker build -q ${IMAGE_PATH}) /bin/sh -c "java -version 2>&1 && node --version")
