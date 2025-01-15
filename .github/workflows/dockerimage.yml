@@ -10,95 +10,43 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: [8, 11, 17, 21]
+        java-type: [jdk, jre]
+        node-version: [18, 20, 22]
+        variant: [default, alpine]
     steps:
       - uses: actions/checkout@v4.2.2
 
-      - name: Build the Docker image
+      - name: Build and test Docker image
         run: |
-          printf "\n\nJDK8 with Node.js 18\n"
-          docker run -i $(docker build -q 8/jdk/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK8 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 8/jdk/18/alpine) /bin/sh -c "java -version && node --version"
+          VARIANT_PATH="${{ matrix.variant == 'alpine' && '/alpine' || '' }}"
+          IMAGE_PATH="${{ matrix.java-version }}/${{ matrix.java-type }}/${{ matrix.node-version }}${VARIANT_PATH}"
 
-          printf "\n\nJDK8 with Node.js 20\n"
-          docker run -i $(docker build -q 8/jdk/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK8 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 8/jdk/20/alpine) /bin/sh -c "java -version && node --version"
+          VARIANT_LABEL="${{ matrix.variant == 'alpine' && ' alpine' || '' }}"
+          printf "\n\n${{ matrix.java-type | upper }}${{ matrix.java-version }} with Node.js ${{ matrix.node-version }}${VARIANT_LABEL}\n"
 
-          printf "\n\nJRE8 with Node.js 18\n"
-          docker run -i $(docker build -q 8/jre/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE8 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 8/jre/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE8 with Node.js 20\n"
-          docker run -i $(docker build -q 8/jre/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE8 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 8/jre/20/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJDK11 with Node.js 18\n"
-          docker run -i $(docker build -q 11/jdk/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK11 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 11/jdk/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJDK11 with Node.js 20\n"
-          docker run -i $(docker build -q 11/jdk/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK11 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 11/jdk/20/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE11 with Node.js 18\n"
-          docker run -i $(docker build -q 11/jre/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE11 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 11/jre/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE11 with Node.js 20\n"
-          docker run -i $(docker build -q 11/jre/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE11 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 11/jre/20/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJDK17 with Node.js 18\n"
-          docker run -i $(docker build -q 17/jdk/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK17 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 17/jdk/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJDK17 with Node.js 20\n"
-          docker run -i $(docker build -q 17/jdk/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK17 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 17/jdk/20/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE17 with Node.js 18\n"
-          docker run -i $(docker build -q 17/jre/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE17 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 17/jre/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE17 with Node.js 20\n"
-          docker run -i $(docker build -q 17/jre/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE17 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 17/jre/20/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJDK21 with Node.js 18\n"
-          docker run -i $(docker build -q 21/jdk/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK21 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 21/jdk/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJDK21 with Node.js 20\n"
-          docker run -i $(docker build -q 21/jdk/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJDK21 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 21/jdk/20/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE21 with Node.js 18\n"
-          docker run -i $(docker build -q 21/jre/18) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE21 alpine with Node.js 18\n"
-          docker run -i $(docker build -q 21/jre/18/alpine) /bin/sh -c "java -version && node --version"
-
-          printf "\n\nJRE21 with Node.js 20\n"
-          docker run -i $(docker build -q 21/jre/20) /bin/sh -c "java -version && node --version"
-          printf "\n\nJRE21 alpine with Node.js 20\n"
-          docker run -i $(docker build -q 21/jre/20/alpine) /bin/sh -c "java -version && node --version"
+          # Run container and capture version outputs
+          VERSIONS=$(docker run -i $(docker build -q ${IMAGE_PATH}) /bin/sh -c "java -version 2>&1 && node --version")
+          
+          # Check Java version
+          if ! echo "$VERSIONS" | grep -q "version \"${{ matrix.java-version }}"; then
+            echo "::error::Expected Java ${{ matrix.java-version }} but got different version"
+            exit 1
+          fi
+          
+          # Check Node version
+          if ! echo "$VERSIONS" | grep -q "v${{ matrix.node-version }}"; then
+            echo "::error::Expected Node.js ${{ matrix.node-version }} but got different version"
+            exit 1
+          fi
+          
+          echo "$VERSIONS"
 
   auto-merge:
     runs-on: ubuntu-latest
     needs: build
-
     permissions:
       pull-requests: write
       contents: write
