@@ -107,7 +107,7 @@ jobs:
       - name: Inspect Image
         if: always() && github.event_name != 'pull_request' && contains(github.ref, 'master')
         run: |
-          docker buildx imagetools inspect ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
+          docker buildx imagetools inspect $(echo "${{ steps.prepare.outputs.tags }}" | cut -d',' -f1)
 
       - name: Clear
         if: always() && github.event_name != 'pull_request'
