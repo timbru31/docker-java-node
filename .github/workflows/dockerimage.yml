@@ -33,9 +33,16 @@ jobs:
           echo "$VERSIONS"
 
           # Check Java version
-          if ! echo "$VERSIONS" | grep -q "version \"${{ matrix.java-version }}"; then
-            echo "::error::Expected Java ${{ matrix.java-version }} but got different version"
-            exit 1
+          if [ "${{ matrix.java-version }}" = "8" ]; then
+            if ! echo "$VERSIONS" | grep -q "version \"1.8.0"; then
+              echo "::error::Expected Java 8 but got different version"
+              exit 1
+            fi
+          else
+            if ! echo "$VERSIONS" | grep -q "version \"${{ matrix.java-version }}"; then
+              echo "::error::Expected Java ${{ matrix.java-version }} but got different version"
+              exit 1
+            fi
           fi
 
           # Check Node version
