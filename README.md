@@ -4,7 +4,7 @@
 [![buildx Status](https://github.com/timbru31/docker-java-node/workflows/buildx/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3Abuildx)
 [![Lint Dockerfiles](https://github.com/timbru31/docker-java-node/workflows/Lint%20Dockerfiles/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3A%22Lint+Dockerfiles%22)
 
-A minimal Dockerfile based on Eclipse Temurin's OpenJDK JRE or JDK 8/11/17/21 Dockerfile (regular, alpine) with Node.js 18 LTS (Hydrogen), Node.js 22 LTS (Iron) or Node.js 20 LTS (Jod) installed.
+A minimal Dockerfile based on Eclipse Temurin's OpenJDK JRE or JDK 8/11/17/21 Dockerfile (regular, alpine) with Node.js 18 LTS (Hydrogen), Node.js 20 LTS (Iron) or Node.js 22 LTS (Jod) installed.
 
 ## What's included
 
