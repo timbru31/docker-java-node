@@ -75,7 +75,7 @@ jobs:
           install: true
 
       - name: Docker Buildx (build)
-        uses: docker/build-push-action@v6.17.0
+        uses: docker/build-push-action@v6.18.0
         if: success() && !contains(github.ref, 'master')
         with:
           push: false
@@ -93,7 +93,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Buildx (push)
-        uses: docker/build-push-action@v6.17.0
+        uses: docker/build-push-action@v6.18.0
         if: success() && github.event_name != 'pull_request' && contains(github.ref, 'master')
         with:
           push: true
