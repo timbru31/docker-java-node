@@ -16,7 +16,7 @@ jobs:
       matrix:
         java-version: [8, 11, 17, 21]
         java-type: [jdk, jre]
-        node-version: [20, 22]
+        node-version: [20, 22, 24]
         variant: [default, alpine]
         include:
           - variant: default
