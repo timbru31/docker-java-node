@@ -8,7 +8,7 @@ RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/
   && echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories \
   && apk -U upgrade \
   && apk add --no-cache \
-    nodejs@edge \
+    nodejs-current@edge \
     npm@edge \
     yarn \
     curl \
