@@ -1,8 +1,8 @@
 FROM eclipse-temurin:17-jdk
-LABEL maintainer "Tim Brust <github@timbrust.de>"
+LABEL maintainer="Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
-ENV REFRESHED_AT $REFRESHED_AT
+ENV REFRESHED_AT=$REFRESHED_AT
 ARG NODE_MAJOR=24
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
