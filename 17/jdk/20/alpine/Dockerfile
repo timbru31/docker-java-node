@@ -1,8 +1,8 @@
 FROM eclipse-temurin:17-jdk-alpine
-LABEL maintainer "Tim Brust <github@timbrust.de>"
+LABEL maintainer="Tim Brust <github@timbrust.de>"
 
 ARG REFRESHED_AT
-ENV REFRESHED_AT $REFRESHED_AT
+ENV REFRESHED_AT=$REFRESHED_AT
 
 RUN echo @old-stable https://dl-cdn.alpinelinux.org/alpine/v3.20/community >> /etc/apk/repositories \
   && echo @old-stable https://dl-cdn.alpinelinux.org/alpine/v3.20/main >> /etc/apk/repositories \
