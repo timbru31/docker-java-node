@@ -1,4 +1,4 @@
-# Java (JRE or JDK version 8, 11, 17 or 21) with Node.js 20 LTS (Iron), Node.js 22 LTS (Jod) or Node.js 24 (Krypton) Dockerfile
+# Java (JRE or JDK version 8, 11, 17, 21 or 25) with Node.js 20 LTS (Iron), Node.js 22 LTS (Jod) or Node.js 24 (Krypton) Dockerfile
 
 [![Docker Automated build](https://img.shields.io/docker/automated/timbru31/java-node.svg)](https://hub.docker.com/r/timbru31/java-node/)
 [![buildx Status](https://github.com/timbru31/docker-java-node/workflows/buildx/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3Abuildx)
