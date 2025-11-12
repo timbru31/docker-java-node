@@ -4,11 +4,11 @@
 [![buildx Status](https://github.com/timbru31/docker-java-node/workflows/buildx/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3Abuildx)
 [![Lint Dockerfiles](https://github.com/timbru31/docker-java-node/workflows/Lint%20Dockerfiles/badge.svg)](https://github.com/timbru31/docker-java-node/actions?query=workflow%3A%22Lint+Dockerfiles%22)
 
-A minimal Dockerfile based on Eclipse Temurin's OpenJDK JRE or JDK 8/11/17/21 Dockerfile (regular, alpine) with Node.js 20 LTS (Iron), Node.js 22 LTS (Jod) or Node.js 24 (Krypton) installed.
+A minimal Dockerfile based on Eclipse Temurin's OpenJDK JRE or JDK 8/11/17/21/25 Dockerfile (regular, alpine) with Node.js 20 LTS (Iron), Node.js 22 LTS (Jod) or Node.js 24 (Krypton) installed.
 
 ## What's included
 
-- JRE or JDK 8/11/17/21
+- JRE or JDK 8/11/17/21/25
 - Node.js 20 LTS (Iron), Node.js 22 LTS (Jod) or Node.js 24 (Krypton)
 - bundled npm that comes with the respective Node.js version (latest for Node.js on alpine, see [why](https://gitlab.alpinelinux.org/alpine/aports/-/commit/25b10bd1a93e12a7e49fee38b0a229281ae49fb7))
 - yarn
