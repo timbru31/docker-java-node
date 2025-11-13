@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java-version: [8, 11, 17, 21]
+        java-version: [8, 11, 17, 21, 25]
         java-type: [jdk, jre]
         node-version: [20, 22, 24]
         variant: [default, alpine]
@@ -49,7 +49,7 @@ jobs:
           NODE_CODENAME=${{ steps.nodename.outputs.codename }}
           VARIANT="${{ matrix.variant == 'alpine' && '-alpine' || '' }}"
           TYPE="${{ matrix.java-type }}"
-          
+
           # Generate tag combinations
           if [ "$TYPE" = "jdk" ]; then
             TAGS="${DOCKER_IMAGE}:${VERSION}${VARIANT}-jdk-${{ matrix.node-version }}"
@@ -60,7 +60,7 @@ jobs:
             TAGS="${TAGS},${DOCKER_IMAGE}:${VERSION}${VARIANT}-jre-${{ matrix.node-version }}"
             TAGS="${TAGS},${DOCKER_IMAGE}:${VERSION}${VARIANT}-jre-${NODE_CODENAME}"
           fi
-          
+
           echo "docker_image=${DOCKER_IMAGE}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "tags=${TAGS}" >> $GITHUB_OUTPUT
