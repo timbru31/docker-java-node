@@ -28,7 +28,7 @@ jobs:
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/arm/v7
 
     steps:
-      - uses: actions/checkout@v5.0.1
+      - uses: actions/checkout@v6.0.1
 
       - name: Set Node.js codename
         id: nodename
