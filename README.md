@@ -9,7 +9,7 @@ A minimal Dockerfile based on Eclipse Temurin's OpenJDK JRE or JDK 8/11/17/21/25
 ## What's included
 
 - JRE or JDK 8/11/17/21/25
-- Node.js 22 LTS (Jod) or Node.js 24 (Krypton)
+- Node.js 22 LTS (Jod) or Node.js 24 LTS (Krypton)
 - bundled npm that comes with the respective Node.js version (latest for Node.js on alpine, see [why](https://gitlab.alpinelinux.org/alpine/aports/-/commit/25b10bd1a93e12a7e49fee38b0a229281ae49fb7))
 - yarn
 - curl
