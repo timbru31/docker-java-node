@@ -18,7 +18,7 @@ jobs:
         node-version: [22, 24]
         variant: [default, alpine]
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
 
       - name: Build and test Docker image
         run: |
