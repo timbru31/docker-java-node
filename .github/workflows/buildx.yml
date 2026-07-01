@@ -65,7 +65,7 @@ jobs:
           echo "tags=${TAGS}" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4.1.0
+        uses: docker/setup-qemu-action@v4.2.0
 
       - name: Set up Docker Buildx
         id: buildx
