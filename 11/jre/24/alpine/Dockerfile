@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jre-alpine-3.23
+FROM eclipse-temurin:11-jre-alpine-3.24
 LABEL maintainer="Tim Prüssing <github@timbrust.de>"
 
 ARG REFRESHED_AT
