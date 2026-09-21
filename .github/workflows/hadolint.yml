@@ -3,7 +3,7 @@ name: Lint Dockerfiles
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 permissions:
