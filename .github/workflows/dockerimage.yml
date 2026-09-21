@@ -3,7 +3,7 @@ name: Test Docker image
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
   workflow_dispatch:
 
